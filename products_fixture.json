@@ -1,0 +1,54 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "Арабика в зернах",
+        "description": "",
+        "image": "",
+        "category": 1,
+        "price": 10,
+        "created_at": "2024-10-07",
+        "updated_at": "2024-10-07"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "Арабика молотая",
+        "description": "Молотый кофе",
+        "image": "",
+        "category": 1,
+        "price": 20,
+        "created_at": "2024-10-07",
+        "updated_at": "2024-10-07"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Зеленый чай",
+        "description": "Зеленый чай листовой",
+        "image": "",
+        "category": 2,
+        "price": 10,
+        "created_at": "2024-10-07",
+        "updated_at": "2024-10-07"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 5,
+    "fields": {
+        "name": "Черный чай",
+        "description": "Черный чай в пакетиках",
+        "image": "",
+        "category": 2,
+        "price": 15,
+        "created_at": "2024-10-07",
+        "updated_at": "2024-10-07"
+    }
+}
+]
