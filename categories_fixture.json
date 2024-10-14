@@ -1,0 +1,18 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+        "name": "Кофе",
+        "description": "Бодрящий напиток в зернах"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+        "name": "Чай",
+        "description": "Тонизирующий напиток в листьях"
+    }
+}
+]
