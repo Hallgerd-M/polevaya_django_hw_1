@@ -1,22 +1,16 @@
 from django.shortcuts import render, get_object_or_404
 from catalog.models import Product
+from django.views.generic import ListView, DetailView, TemplateView
 
 
-def home(request):
-    return render(request, "home.html")
+class ProductTemplateView(TemplateView):
+    model = Product
+    template_name = "catalog/contacts.html"
 
 
-def contacts(request):
-    return render(request, "contacts.html")
+class ProductListView(ListView):
+    model = Product
 
 
-def catalog(request):
-    products = Product.objects.all()
-    context = {"products": products}
-    return render(request, "catalog.html", context)
-
-
-def product_detail(request, id):
-    product = get_object_or_404(Product, id=id)
-    context = {"product": product}
-    return render(request, 'product_detail.html', context)
+class ProductDetailView(DetailView):
+    model = Product

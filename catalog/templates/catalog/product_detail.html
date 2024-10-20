@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block content %}
 <div class="col" xmlns="http://www.w3.org/1999/html">
@@ -8,22 +8,22 @@
             <p class="card-text">
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Наименование:</p>{{ product.name}}
+                        <p class="fw-bold">Наименование:</p>{{ object.name }}
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Описание:</p> {{ product.description}}
+                        <p class="fw-bold">Описание:</p> {{ object.description }}
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Категория:</p> {{ product.category}}
+                        <p class="fw-bold">Категория:</p> {{ object.category }}
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Цена:</p> {{ product.price}}
+                        <p class="fw-bold">Цена:</p> {{ object.price }}
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Дата создания:</p> {{ product.created_at }}
+                        <p class="fw-bold">Дата создания:</p> {{ object.created_at }}
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center list-group-item-primary">
-                        <p class="fw-bold">Дата изменения:</p> {{ product.updated_at }}
+                        <p class="fw-bold">Дата изменения:</p> {{ object.updated_at }}
                     </li>
                 </ul>
             </p>
