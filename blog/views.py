@@ -36,6 +36,6 @@ class PostUpdateView(UpdateView):
         return reverse_lazy('blog:post_detail', args=[self.kwargs.get('pk')])
 
 
-class PostDeteleView(DeleteView):
+class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy("blog:post_list")
