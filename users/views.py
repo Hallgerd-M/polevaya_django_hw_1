@@ -1,9 +1,10 @@
-from django.views.generic.edit import CreateView
-from users.models import User
-from users.forms import UserRegistrationForm
-from django.urls import reverse_lazy
 from django.core.mail import send_mail
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+
 from config.settings import EMAIL_HOST_USER
+from users.forms import UserRegistrationForm
+from users.models import User
 
 
 class UserCreateView(CreateView):
@@ -22,4 +23,3 @@ class UserCreateView(CreateView):
         from_email = EMAIL_HOST_USER
         recipient_list = [user_email]
         send_mail(subject=subject, message=message, from_email=from_email, recipient_list=recipient_list)
-
