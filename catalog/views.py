@@ -7,11 +7,15 @@ from django.views.generic.edit import CreateView
 
 from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product
+from .services import get_products_from_cache
 
 
 class ProductTemplateView(TemplateView):
     model = Product
     template_name = "catalog/contacts.html"
+
+    def queryset(self):
+        return get_products_from_cache()
 
 
 class ProductListView(ListView):
