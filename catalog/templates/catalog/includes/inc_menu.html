@@ -1,16 +1,29 @@
-  <div class="collapse text-bg-dark" id="navbarHeader">
+   <div class="collapse text-bg-dark" id="navbarHeader">
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
           <h4>Чашечка горячего</h4>
+          {% if user.is_authenticated %}
+          <p class="text-body-secondary"> Добро пожаловать, {{user.email}}</p>
+          {% endif %}
           <p class="text-body-secondary">Лучшие сорта кофе, чая и других напитков, выбранные с любовью для вас</p>
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
           <h4>Меню</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Главная</a></li>
             <li><a href="{% url 'catalog:catalog' %}" class="text-white">Каталог</a></li>
             <li><a href="{% url 'catalog:contacts' %}" class="text-white">Контакты</a></li>
+            {% if user.is_authenticated %}
+            <li>
+              <form method="post" action="{% url 'users:logout' %}" style="display: inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link nav-link">Выход</button>
+              </form>
+            </li>
+            {% else %}
+            <li><a href="{% url 'users:login' %}" class="text-white">Вход</a></li>
+            <li><a href="{% url 'users:register' %}" class="text-white">Регистрация</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>
@@ -22,7 +35,8 @@
         <!--svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         <strong>Album</--strong-->
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+              aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>

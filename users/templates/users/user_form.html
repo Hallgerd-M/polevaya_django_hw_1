@@ -10,11 +10,7 @@
                          {{ form.as_p }}
                     </div>
                     <button type="submit" class="btn btn-primary">
-                        {% if object %}
-                        Сохранить
-                        {% else %}
-                        Создать
-                        {% endif %}
+                       Зарегистрироваться
                     </button>
                      <a href="{% url 'catalog:catalog' %}" class="btn btn-secondary">Отмена</a>
                 </div>
