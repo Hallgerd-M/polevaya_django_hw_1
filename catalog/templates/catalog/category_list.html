@@ -7,7 +7,7 @@
                <div class="card-body">
                    <h3> {{ object.name }}</h3>
                    <p class="card-text">
-                   <a class="btn btn-primary" href="{% url 'catalog:products_by_category' object.category  %}" role="button">Перейти</a>
+                   <a class="btn btn-primary" href="{% url 'catalog:products_by_category' object.id  %}" role="button">Перейти</a>
               </p>
                </div>
           </div>

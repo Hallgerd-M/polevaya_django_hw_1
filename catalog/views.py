@@ -7,11 +7,23 @@ from django.views.generic.edit import CreateView
 
 from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product, Category
-from .services import get_products_from_cache, get_products_by_category
+from .services import get_products_from_cache, CategoryService
 
 
 class CategoryListView(ListView):
     model = Category
+
+
+class CategoryDetailView(DetailView):
+    model = Category
+    template_name = 'catalog/products_by_category.html'
+    context_object_name = "category"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_id = self.object.id
+        context["products"] = CategoryService.get_product_by_category(category_id)
+        return context
 
 
 class ProductTemplateView(TemplateView):
@@ -77,6 +89,7 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
             raise PermissionDenied
 
 
+"""
 class ProductByCategoryListView(ListView):
     model = Product
     template_name = 'catalog/products_by_category.html'
@@ -84,6 +97,6 @@ class ProductByCategoryListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        category = self.object.category
-        context["category"] = get_products_by_category(category)
-        return context
+        category_id = self.objects.category.id
+        context["id"] = get_products_by_category(category_id)
+        return context"""

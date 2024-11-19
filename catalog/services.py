@@ -3,6 +3,20 @@ from django.core.cache import cache
 
 from catalog.models import Product
 
+
+class CategoryService:
+
+    @staticmethod
+    def get_product_by_category(category_id):
+        products = Product.objects.filter(category_id=category_id)
+        #if not products.exists():
+        #    return None
+        products_list = []
+        for product in products:
+            products_list.append(product)
+        return products_list
+
+
 def get_products_from_cache():
     """ Фукция, которая проверяет включен ли кеш, и в случае, если он включен,
      либо получает данные по продуктам из кеша, либо, если кеш пуст,
@@ -18,11 +32,12 @@ def get_products_from_cache():
     return products
 
 
+"""
 def get_products_by_category(category):
     products = Product.objects.all()
     get_products_by_category = []
     for product in products:
-        cat = Product.object.get("category")
+        cat = Product.objects.get("category")
         if cat == category:
             get_products_by_category.append(product)
-    return get_products_by_category
+    return get_products_by_category"""

@@ -1,7 +1,8 @@
 {% extends 'catalog/base.html' %}
 {% load my_tags %}
 {% block content %}
-{% for product in object_list %}
+<div class="container"> <h2> Категория: {{ category.name }}</h2> </div>
+{% for product in products %}
         <div class="col">
           <div class="card shadow-sm">
                <img src="{{ product.image | media_filter }}" class="img-thumbnail" alt="{{ product.name }}">
