@@ -39,7 +39,7 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        related_name="products",
+        related_name="category",
     )
     price = models.IntegerField(verbose_name="", help_text="")
     created_at = models.DateField(auto_now_add=True)

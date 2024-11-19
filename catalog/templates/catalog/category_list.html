@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+{% block content %}
+{% for object in object_list %}
+        <div class="col">
+          <div class="card shadow-sm">
+               <div class="card-body">
+                   <h3> {{ object.name }}</h3>
+                   <p class="card-text">
+                   <a class="btn btn-primary" href="{% url 'catalog:products_by_category' object.category  %}" role="button">Перейти</a>
+              </p>
+               </div>
+          </div>
+        </div>
+{% endfor %}
+{% endblock %}

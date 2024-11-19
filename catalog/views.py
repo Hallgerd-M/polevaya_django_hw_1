@@ -6,8 +6,12 @@ from django.views.generic import (DeleteView, DetailView, ListView,
 from django.views.generic.edit import CreateView
 
 from catalog.forms import ProductForm, ProductModeratorForm
-from catalog.models import Product
-from .services import get_products_from_cache
+from catalog.models import Product, Category
+from .services import get_products_from_cache, get_products_by_category
+
+
+class CategoryListView(ListView):
+    model = Category
 
 
 class ProductTemplateView(TemplateView):
@@ -43,7 +47,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy("catalog:catalog")
-
     #   def get_object(self, queryset=None):
     #      self.object = super().get_object(queryset)
     #     if self.request.user == self.object.owner:
@@ -72,3 +75,15 @@ class ProductDeleteView(LoginRequiredMixin, DeleteView):
         product = super().get_object()
         if user != product.owner:
             raise PermissionDenied
+
+
+class ProductByCategoryListView(ListView):
+    model = Product
+    template_name = 'catalog/products_by_category.html'
+    context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category = self.object.category
+        context["category"] = get_products_by_category(category)
+        return context
