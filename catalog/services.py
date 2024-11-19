@@ -22,7 +22,7 @@ def get_products_by_category(category):
     products = Product.objects.all()
     get_products_by_category = []
     for product in products:
-        cat = Product.objects.get("category")
+        cat = Product.object.get("category")
         if cat == category:
             get_products_by_category.append(product)
     return get_products_by_category
